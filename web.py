@@ -1,11 +1,12 @@
 from flask import Flask
+from flask.wrappers import Response
 
 app = Flask(__name__)
 
 @app.route('/')
-def web():
-    return '不要不开心！'
+def hello_world():
+    return Response('不要不开心！', mimetype='text/plain')
 
+# 去除不必要的handler函数，直接使用Flask默认请求处理机制
 if __name__ == '__main__':
-    # 这里 host 设置为 0.0.0.0 表示可以从外部访问
     app.run(host='0.0.0.0', port=5000)
